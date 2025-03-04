@@ -1,0 +1,485 @@
+
+
+************************************************************************************************************************
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+
+
+SecurityAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.security.authentication.DefaultAuthenticationEventPublisher' (OnClassCondition)
+
+   SecurityAutoConfiguration#authenticationEventPublisher matched:
+      - @ConditionalOnMissingBean (types: org.springframework.security.authentication.AuthenticationEventPublisher; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   SecurityFilterAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer', 'org.springframework.security.config.http.SessionCreationPolicy' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   SecurityFilterAutoConfiguration#securityFilterChainRegistration matched:
+      - @ConditionalOnBean (names: springSecurityFilterChain; SearchStrategy: all) found bean 'springSecurityFilterChain' (OnBeanCondition)
+
+SpringBootWebSecurityConfiguration matched:
+      - found 'session' scope (OnWebApplicationCondition)
+
+   SpringBootWebSecurityConfiguration.SecurityFilterChainConfiguration matched:
+      - AllNestedConditions 2 matched 0 did not; NestedCondition on DefaultWebSecurityCondition.Beans @ConditionalOnMissingBean (types: org.springframework.security.web.SecurityFilterChain; SearchStrategy: all) did not find any beans; NestedCondition on DefaultWebSecurityCondition.Classes @ConditionalOnClass found required classes 'org.springframework.security.web.SecurityFilterChain', 'org.springframework.security.config.annotation.web.builders.HttpSecurity' (DefaultWebSecurityCondition)
+
+   SpringBootWebSecurityConfiguration.WebSecurityEnablerConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.security.config.annotation.web.configuration.EnableWebSecurity' (OnClassCondition)
+      - @ConditionalOnMissingBean (names: springSecurityFilterChain; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+UserDetailsServiceAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.security.authentication.AuthenticationManager' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - AnyNestedCondition 1 matched 2 did not; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.PasswordConfigured @ConditionalOnProperty (spring.security.user.password) did not find property 'password'; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.NameConfigured @ConditionalOnProperty (spring.security.user.name) did not find property 'name'; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.MissingAlternative @ConditionalOnMissingClass did not find unwanted classes 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository', 'org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector', 'org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository' (UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured)
+      - @ConditionalOnBean (types: org.springframework.security.config.ObjectPostProcessor; SearchStrategy: all) found beans 'objectPostProcessor', 'webAuthorizationManagerPostProcessor', 'filterChainDecoratorPostProcessor', 'authenticationManagerPostProcessor'; @ConditionalOnMissingBean (types: org.springframework.security.authentication.AuthenticationManager,org.springframework.security.authentication.AuthenticationProvider,org.springframework.security.core.userdetails.UserDetailsService,org.springframework.security.authentication.AuthenticationManagerResolver,org.springframework.security.oauth2.jwt.JwtDecoder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+
+
+Negative matches:
+-----------------
+
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
+
+    org.springframework.boot.autoconfigure.ssl.SslAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
+
+    org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
+
+    org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
+
+
+
+************************************************************************************************************************
+
+
+curl -v http://localhost:8095/hello
+
+curl -u user:af2b947f-8169-4015-b4ee-0fce23ae6a4f http://localhost:8095/hello
+
+
+
+************************************************************************************************************************
+
+echo -n user:af2b947f-8169-4015-b4ee-0fce23ae6a4f | base64
+
+    dXNlcjphZjJiOTQ3Zi04MTY5LTQwMTUtYjRlZS0wZmNlMjNhZTZhNGY=
+
+curl -H "Authorization: Basic dXNlcjphZjJiOTQ3Zi04MTY5LTQwMTUtYjRlZS0wZmNlMjNhZTZhNGY" http://localhost:8095/hello
+
+
+
+
+
+
+
+
+************************************************************************************************************************
+
+
+UserDetailsService
+
+PasswordEncoder
+
+
+************************************************************************************************************************
+
+
+openssl
+
+
+help:
+
+Standard commands
+asn1parse         ca                ciphers           cmp
+cms               crl               crl2pkcs7         dgst
+dhparam           dsa               dsaparam          ec
+ecparam           enc               engine            errstr
+fipsinstall       gendsa            genpkey           genrsa
+help              info              kdf               list
+mac               nseq              ocsp              passwd
+pkcs12            pkcs7             pkcs8             pkey
+pkeyparam         pkeyutl           prime             rand
+rehash            req               rsa               rsautl
+s_client          s_server          s_time            sess_id
+smime             speed             spkac             srp
+storeutl          ts                verify            version
+x509
+
+Message Digest commands (see the `dgst' command for more details)
+blake2b512        blake2s256        md4               md5
+mdc2              rmd160            sha1              sha224
+sha256            sha3-224          sha3-256          sha3-384
+sha3-512          sha384            sha512            sha512-224
+sha512-256        shake128          shake256          sm3
+
+Cipher commands (see the `enc' command for more details)
+aes-128-cbc       aes-128-ecb       aes-192-cbc       aes-192-ecb
+aes-256-cbc       aes-256-ecb       aria-128-cbc      aria-128-cfb
+aria-128-cfb1     aria-128-cfb8     aria-128-ctr      aria-128-ecb
+aria-128-ofb      aria-192-cbc      aria-192-cfb      aria-192-cfb1
+aria-192-cfb8     aria-192-ctr      aria-192-ecb      aria-192-ofb
+aria-256-cbc      aria-256-cfb      aria-256-cfb1     aria-256-cfb8
+aria-256-ctr      aria-256-ecb      aria-256-ofb      base64
+bf                bf-cbc            bf-cfb            bf-ecb
+bf-ofb            camellia-128-cbc  camellia-128-ecb  camellia-192-cbc
+camellia-192-ecb  camellia-256-cbc  camellia-256-ecb  cast
+cast-cbc          cast5-cbc         cast5-cfb         cast5-ecb
+cast5-ofb         des               des-cbc           des-cfb
+des-ecb           des-ede           des-ede-cbc       des-ede-cfb
+des-ede-ofb       des-ede3          des-ede3-cbc      des-ede3-cfb
+des-ede3-ofb      des-ofb           des3              desx
+idea              idea-cbc          idea-cfb          idea-ecb
+idea-ofb          rc2               rc2-40-cbc        rc2-64-cbc
+rc2-cbc           rc2-cfb           rc2-ecb           rc2-ofb
+rc4               rc4-40            seed              seed-cbc
+seed-cfb          seed-ecb          seed-ofb          sm4-cbc
+sm4-cfb           sm4-ctr           sm4-ecb           sm4-ofb
+
+
+************************************************************************************************************************
+
+
+openssl req -help
+
+
+Usage: req [options]
+
+General options:
+ -help                 Display this summary
+ -engine val           Use engine, possibly a hardware device
+ -keygen_engine val    Specify engine to be used for key generation operations
+ -in infile            X.509 request input file (default stdin)
+ -inform PEM|DER       Input format - DER or PEM
+ -verify               Verify self-signature on the request
+
+Certificate options:
+ -new                  New request
+ -config infile        Request template file
+ -section val          Config section to use (default "req")
+ -utf8                 Input characters are UTF8 (default ASCII)
+ -nameopt val          Certificate subject/issuer name printing options
+ -reqopt val           Various request text options
+ -text                 Text form of request
+ -x509                 Output an X.509 certificate structure instead of a cert request
+ -CA infile            Issuer cert to use for signing a cert, implies -x509
+ -CAkey val            Issuer private key to use with -CA; default is -CA arg
+                       (Required by some CA's)
+ -subj val             Set or modify subject of request or cert
+ -subject              Print the subject of the output request or cert
+ -multivalue-rdn       Deprecated; multi-valued RDNs support is always on.
+ -days +int            Number of days cert is valid for
+ -set_serial val       Serial number to use
+ -copy_extensions val  copy extensions from request when using -x509
+ -addext val           Additional cert extension key=value pair (may be given more than once)
+ -extensions val       Cert extension section (override value in config file)
+ -reqexts val          Request extension section (override value in config file)
+ -precert              Add a poison extension to the generated cert (implies -new)
+
+Keys and Signing options:
+ -key val              Key for signing, and to include unless -in given
+ -keyform format       Key file format (ENGINE, other values ignored)
+ -pubkey               Output public key
+ -keyout outfile       File to write private key to
+ -passin val           Private key and certificate password source
+ -passout val          Output file pass phrase source
+ -newkey val           Generate new key with [<alg>:]<nbits> or <alg>[:<file>] or param:<file>
+ -pkeyopt val          Public key options as opt:value
+ -sigopt val           Signature parameter in n:v form
+ -vfyopt val           Verification parameter in n:v form
+ -*                    Any supported digest
+
+Output options:
+ -out outfile          Output file
+ -outform PEM|DER      Output format - DER or PEM
+ -batch                Do not ask anything during request generation
+ -verbose              Verbose output
+ -noenc                Don't encrypt private keys
+ -nodes                Don't encrypt private keys; deprecated
+ -noout                Do not output REQ
+ -newhdr               Output "NEW" in the header lines
+ -modulus              RSA modulus
+
+Random state options:
+ -rand val             Load the given file(s) into the random number generator
+ -writerand outfile    Write random data to the specified file
+
+Provider options:
+ -provider-path val    Provider load path (must be before 'provider' argument if required)
+ -provider val         Provider to load (can be specified multiple times)
+ -propquery val        Property query used when fetching algorithms
+
+
+
+************************************************************************************************************************
+
+
+openssl req -newkey rsa:2048 -x509 -keyout key.pem -out cert.pem -days 365
+
+
+...............+...............+..+...............+....+...+.....+.+.....+.+.....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+...+..+............+.............+......+..+.......+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+...........+....+..+.+...............+..+.......+.....+.........+.........+...+.........+.+...+......+.....+...+.............+..+...+...+....+......+.........+........+.......+..+......+...+....+.....+.+............+........+......+.............+...+........+.....................+....+..+....+........+...+....+......+........+.+...+.....+............+.+........+.........+..........+......+..............+...+...............+....+...+...+..+......+....+..+.........+......+.............+...+..+.......+...+...+.....+..........+...+..+..................+.+...+..................+...+.................+...+.+.....+.+.....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.+.........+......+.+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+.........+.....+.+..............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*....+.+..+......+......+......+......................+.....+..........+............+...+..+...+......+......+.........+.+...+.....+.......+.....+......+.......+...+.....+.......+...........+...............+..........+............+...+..+....+...+..+.+.....+.........+....+..+.......+.....+..........+........+.......+.....+......+......+.+..+.+.....+...............+......+.+........+....+.....................+...........+...+.......+...+......+..+............+.+.....+.........+.+..+..........+............+......+.....+....+.................+....+..+.......+...+..+......+......+..........+.....+...+.............+..+...+....+......+...+..............+.+..+...............+....+...+.....+...+....+......+........+............+...+...............+..........+..+.........+....+.........+.....+.......+........+.+............+........+.+.........+..+....+...+.....+......+.+......+.....+.......+.....+...+....+...+..+...+...+....+.........+..+...+.+...+......+..........................+...+......+...................+......+......+...+..+....+............+..+......+......+...+.......+......+........+.+..................+..+.+...+...........+....+...........+...+.+.....+.......+.....+.........+..........+.....+.+...+..+.........+...+......+....+...+........+....+.....+.......+........+...+...+......................+........+............+...+....+...+...............+...+...........+...+.+.........+........+...+....+...........+.+...+..+....+...........+...+...+...+............+.......+...........+.......+.....+...............+..........+..+......+.+.....+...+.+............+............+.....+..........+..+.........+......+......+.........+......+....+........+.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Note: password: 1234
+
+
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:brasil
+String too long, must be at most 2 bytes long
+Country Name (2 letter code) [AU]:br
+State or Province Name (full name) [Some-State]:rio de janeiro
+Locality Name (eg, city) []:cabo frio
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:freelancer
+Organizational Unit Name (eg, section) []:freelancer
+Common Name (e.g. server FQDN or YOUR name) []:com.mvbr
+Email Address []:marcus.vbrangel@gmail.com
+
+
+************************************************************************************************************************
+
+
+ls -lash
+
+    4,0K -rw-rw-r-- 1 wolf wolf 1,5K fev 28 00:30 cert.pem
+    4,0K -rw------- 1 wolf wolf 1,9K fev 28 00:28 key.pem
+
+
+cat cert.pem
+
+    -----BEGIN CERTIFICATE-----
+    MIIEJTCCAw2gAwIBAgIUcxzOyxhCCPVS+VZEzRhm5IT2sD8wDQYJKoZIhvcNAQEL
+    BQAwgaExCzAJBgNVBAYTAmJyMRcwFQYDVQQIDA5yaW8gZGUgamFuZWlybzESMBAG
+    A1UEBwwJY2FibyBmcmlvMRMwEQYDVQQKDApmcmVlbGFuY2VyMRMwEQYDVQQLDApm
+    cmVlbGFuY2VyMREwDwYDVQQDDAhjb20ubXZicjEoMCYGCSqGSIb3DQEJARYZbWFy
+    Y3VzLnZicmFuZ2VsQGdtYWlsLmNvbTAeFw0yNTAyMjgwMzMwMTlaFw0yNjAyMjgw
+    MzMwMTlaMIGhMQswCQYDVQQGEwJicjEXMBUGA1UECAwOcmlvIGRlIGphbmVpcm8x
+    EjAQBgNVBAcMCWNhYm8gZnJpbzETMBEGA1UECgwKZnJlZWxhbmNlcjETMBEGA1UE
+    CwwKZnJlZWxhbmNlcjERMA8GA1UEAwwIY29tLm12YnIxKDAmBgkqhkiG9w0BCQEW
+    GW1hcmN1cy52YnJhbmdlbEBnbWFpbC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IB
+    DwAwggEKAoIBAQC52eBTYuzrB5hC6t0COQ7GzsKYo2DYdwpzUbnJ3ltGHSvJlUbu
+    e9Db7IyqgRgZ0QGPlZ+4qVOuVJ9c72eMkGacbtRKfVQ58BB5y/yfwfR08JWCVlYG
+    /bA5nBxfCaUhhAxwekCZlaD7NZJsvxwDd2U5HQUNMGmjXN+wJb7Lj3UPj3dVIyIG
+    7x2xEqZIWQXt/A7M9jUU5+VHqdJ3S4wH8xlwAen0xaEf0rsFweTNhMTRx+kzHLXF
+    KRg/776FvNBwXPUQGXBQIoLWwQFqYsFOUdGGurDO0MaDBBvohdTmL4CvS0Phncsf
+    Ns3vcciq0vpvjHdDDoL7GGKC2Fp9ao5aEm8FAgMBAAGjUzBRMB0GA1UdDgQWBBTf
+    SKNSRg4mldGkJyev83YBfJD7ijAfBgNVHSMEGDAWgBTfSKNSRg4mldGkJyev83YB
+    fJD7ijAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQART1wc0U3M
+    dTzH2QBQoJN5TgN4+sUn9uNdhkyvni8ik0QHZmL8PrRW/7jQYS/b1RJUv1IeI6LU
+    Q2uXy1xT05EgbkZUEBp1A88Lwta7QUrac4H9pbQno1fWf5JwYWGxAYPtLRR6RtX3
+    Y1s3wcorS4HnFCgQj7DqpVaVZkCFACHjXfPF7Isgdkbma+rvHzoESBRJ9g1ig6/8
+    0tXmgQ3ZfqHTt89z1AALKI6SQ4EIi3ASx/kL9YIoPNgFitYN41DmkWJA/BSqXmMu
+    YvsFU81dylkEFWHNxIMFX3IbQsTsX7gC7b/6inOMLvf0Xkt5hRYlx/VzBqC/CrzO
+    ZHyWXkL+Jaem
+    -----END CERTIFICATE-----
+
+
+
+cat key.pem
+
+    -----BEGIN ENCRYPTED PRIVATE KEY-----
+    MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQIZJ/iseb6wdQCAggA
+    MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECAi7P8ion/meBIIEyB4gdenlSVRB
+    qASvjWK9vgkSP8Nivg6fue6RgVEL/LK+jHv1vlnFj1ybVqsBvW8ZRa05svwlc1hQ
+    RjgeZI5lO3nDdqGBYwJpQyPUg7xJG1H8JqDMQuGcY7wRg7dbmLVYXjqZoHTmTq9w
+    33Y7JHer6uSyQ9tVlz0a2gZnzZQhCC1LEbf5T5Qu25KtZIG34CKF0UpJFFTPmmwk
+    zmxhFTfFZ2rRGgKuhfeo647fgmLftImnO3vs4gjVo9WZGK0Nqj33jWYLRu0wQnsZ
+    mfUbkUBqdVF6QeXLNWAZp+lKbkY+qAi2PjaYPcKhL/FQvSl4/OQCl0HWaFZuIgf3
+    cY4XbTwEL/52PldZWt6jf+zTP8H9OuYqjiJaM4zXDt2+m/+qwehA6D+cqSJ1RLFH
+    PnxRfpylrFgYQ81Nw3lDG2ZLvCJaRKY2ouyZU6+F/NjWRXbLbX9ggqKUgZyy/Ywq
+    3gVM0G3LNr6jtuYTHeHiwFjR1+E+2Vv83FsNk/qFgNb6FzbEePS98Bzu2s/Ya5T8
+    4GaBt8gKmEmMwIHDcNqiETydDwBNNPs+c7TD/fCnNsmqBCI0J7zRRX41J/W9KtW6
+    3Ffn+1002+9GknfaLrprN/r/W5R6dQN4hExXKxH0Z89nWp1R7sRSrlSuTnxsERXb
+    FMfMuhjsurxrZGtuK9RiFn0KipNvCqL96TBdxXYpVijGQY6w+TfILLO/+r7OtTl7
+    i9ETuDpMvo5UcB2mg7+7dzqDAiaIGoyER+no4nMn6VoQdWiZCrMaY8KKQjRE1SzE
+    yfWwUhTjx0UZJy9hSci3tpNtb/1wzTzOMhXbBGsvJCfJEaWWOO0P1OZCl5khl/sm
+    NnoPAZteZXbXZw0KNPfRgWjTo3OKdexU86n3dllrzH6yJCaWBGgLLCxfcIQTQQ7z
+    Yj1xJCDLOVNOECLy7jow33lM3t2OQf+xFivFcn1QMB1kMV83AQbHvJn6u/iz4p6h
+    nR53oMl4P7wDIiryIp/YEpyAGeuyEpCyM5rPMTyQyCaQrD6TpiiSMvZjMcZgrNWL
+    rvCWF3zQBfJlnnU6rZwnxzo02FKMU7SAt26yx4JShtiyVv9EgmTAX3FQqzajdhkr
+    xSF4w9qmkwU6OWIN4TOQ6G0ktXzrLE1pYbAcjEG0nq2gnZS+YKo1oHhqpqQQxMnO
+    N/odCYXwyJR0TjmihwZiDa7Wc0ABQ2uC75A9Tcy0xr4PSEDKMzhM53kKi+ftEUOS
+    VdZN5OaEopcs1OLi5+fTGptw2YPBmX7avcDGOHlXy8BAyh+ZlQC/2d3yBKiFMPsr
+    YLnuRTKqBDW0H3BbgMWNcAe98f6A51t8+D2osywWNvgF2p+SS7Vvtr8WtMUfh/SS
+    XL2H1+BG8GIEbzoJlm2AI2MX5NW8skS4wGIhfnIHZXKCS7ZfUempIaNdaB8zKtve
+    HlnX4vNrtO0LCXT0/Ej/ygNJRR2vcLHA1H+ogjQzOpheuUtC37KOBGt4gL6nnOAB
+    jS+mtEqnHR9cuRUq9Y1i63pZh5BGsUl90Y/9bh1PTriambjUY+arDvydRul6isWK
+    +ifQfREdMhf5/gsloYBhjTFZAb3X327VuvfNl7ZYXGhW7wdDdSwvK1bUXJNnPLNb
+    gPmZVYx2ccO3PiH+oSmtuA==
+    -----END ENCRYPTED PRIVATE KEY-----
+
+
+
+
+************************************************************************************************************************
+
+
+openssl pkcs12 -export -in cert.pem -inkey key.pem -out certificate.p12 -name "certificate"
+
+
+ls -lash
+
+    4,0K -rw------- 1 wolf wolf 2,9K fev 28 17:28 certificate.p12
+
+
+
+cat certificate.p12
+
+        0�
+          F0�
+        ��      *�H��
+        ��
+        �0�
+        0J0)�0� *�H��
+        �y/�g��0
+               *0H��    `�He*��1b��𞁦��������V��N�N��w�GD�5(���r}sZ;BJ�㛼��r:�߳^�}��[.R�&
+        ,1�v�1�
+        }�0�`ڰƙ�z}�@�{J���a��JC�XA��>&�o��N�AjK���M7�K�?�����صǶx9������\��F���NʩF?�0�\����8�isJ3�J)�®�x��-�թ?�V�`2�X�#        �?����YH���d��Ĳ8t�?����d����+)��Ƅ$��C�{�!�
+        %�������[��>��]�H�����,hV_< ��
+                                      ��pj�ۨ��\���<Iv�
+                                                       .n��TT�euy��X���y        �50�f�*e�o��Ts�a�-��H¡g�*�U�N���Z�7���������>�˳~'!��t+����c���{��Oe��K��7=&^~���I����g��j
+                                                                                                                                                                           -�=�%a�^��ƚp�(⍳j�D��!�x���
+                                                                                                                                                                                                     �
+                                                                                                                                                                                                      g4���h�4�
+        _���T���xǗh�,V�S�Ƌ�j�������gz$s���Le�����RI�)C<��ϰS�@0��À�E��ӌ�\��D��O���t`8aܘ߰rZ[�Aøv���:�9$`�h�~����k�-:���������ec�"d�W8��m��I��I��Y       7/Ŗ��W�b���VLz�Z�ʸ���                                 թ�"�@Q&��z�ΓZƕ�����<
+        �?k�&����lOs�'�cl��i��)�����-�1yq�"���^V-6ti T���4f(])�x��W<
+        �ϩ�                                                          4:��ܢ��Q�}�]No�#
+           d||Je���f+O��B��
+                           �$�^���r�lpI�֑ͩ�\W�����Nzj
+                                                     &|��&e���3��� Xmh�H���m�[
+                                                                              �^��g����"�=��H
+        �����0��0��                                                                          k�e�1�W҉�%�P�Ϻ��E[55       �q&�i��;���Gǘ�8J�s3 ����{��^���Y�Bqap7g��3>�>�`i.Q���+F�8LЦ<�}N�:fշڃK�&�U�����w�A��x���_]Ƀ���!?������a.���a0�� *�H��
+                   *�H��
+
+        0J0)�-0W*�H��   *�H��
+        _zFt�%0
+              *�0��     `�He*r4P
+                                ���_�vЇ�Uo�����W�&4Υ�U�
+                                                        ���Aw�K��ת`����FtD���U��y&�+W;Ա��d¼�e�����:�a]�B�nr܃a��[Y��h��
+        �>N̟C?� E�I;���_��R���%�^�#|��n[B��Bc(�yvTA�s3��t��By�������D�M_
+                                                                        =-S&
+        >a��o=��oy��74�4�H�
+        �sOM��<�OvRU�W�ԇM}m�c�p��R�T4���G��}>$w L��(E�JM}�(L���@7"��洝m�x��
+        ]��J�3���x��JI�p����.|S)b�?����CO;MEH�t0y&�Ⱥ�0,�D�Ix�p.�����V��q���ș���/r��¢�O�������e&mlY%8z�8t�:�p��"D��_��đG����^��h��P
+                                                                                                                                   H�z`�����         :/�ѻ��H�Yt#årA~|��@�}���m�(�X�:�� �_���곏ɋ�O1���x�Yb���I~/NgUC���"x�����@��V������r�&���į
+        �Ɨ��։���6����j�-�;��s�&xJ�����                                                                                                     �d_�4f2¨�
+        ������Z1re-�Wył�
+        ���S<\��N�O�Ҁk��u�G�F���i�Yjo�`ew??��
+                                             � a�b}�+>j>��L�L���        АX����I$�n�}tl3Y��~�Դ���0�����mn�Z&X¶x�96_*�D�����Uؘ������?@�Q
+                                                                                                                                       ��{���?i��ehwe��9M|��rQ�\�Gx�m���ֶ��$)<b�5;b
+                                                                                                                                                                                   \��rr���48`'&�~���.�E:�Y��w����ۯ��H�V�
+        "2�9#���0���D��������Y��@Q�+    ��A���%_b�y`�FI۽#����+��l�0Lf;������ IAQ�_�~­���\{�4��p;���dC���3x��i
+                                                                                                                �?7")
+        4�۲���U<`�He )RѶ�@�LsWJ��wĊ���ft*�H��4s��Ġ��Wbp��I[�h�ns�|w,��.�����"$�+�-h�h���՗�~�� ��B��V�����[��M��x��fl������g�Wׇ�q�wF�nDW EpH�P,��Lu��l|WN�vq�u�W�Tt�-�4�Y특lf���^�_Fq1L0#        *�H��
+
+
+
+
+************************************************************************************************************************
+
+
+curl -k -u user:7d1e7329-8f17-4218-b67e-37bf9d83033c https://localhost:8095/hello
+
+
+
+************************************************************************************************************************
+
+
+idea exporte settings: /home/wolf/.config/JetBrains/IdeaIC2024.3/settings.zip
+
+
+************************************************************************************************************************
+
+
+https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html
+
+https://docs.spring.io/spring-security/site/docs/current/api/
+
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
