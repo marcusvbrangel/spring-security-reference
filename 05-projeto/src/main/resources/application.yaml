@@ -1,0 +1,12 @@
+server:
+  port: 8095
+#  ssl:
+#    key-store-type: PKCS12
+#    key-store: classpath:certificate.p12
+#    key-store-password: 1234
+
+spring:
+  application:
+    name: ch2-ex01
+
+#debug: true
