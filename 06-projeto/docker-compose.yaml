@@ -1,0 +1,36 @@
+
+services:
+
+  postgres-spring-security:
+    image: postgres:14
+    container_name: postgres-spring-security
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: spring-security
+    ports:
+      - "5432:5432"
+    volumes:
+      - spring-security-data:/var/lib/postgresql/data
+    networks:
+      - spring-security-network
+
+  pgadmin-spring-security:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: 1234
+    ports:
+      - "8099:80"
+    depends_on:
+      - postgres-spring-security
+    networks:
+      - spring-security-network
+
+volumes:
+  spring-security-data:
+
+networks:
+  spring-security-network:
+    driver: bridge
